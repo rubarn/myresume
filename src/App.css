@@ -1,5 +1,8 @@
+
+
 .App {
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 .App-logo {
@@ -21,11 +24,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(216, 216, 216);
 }
 
 .App-link {
-  color: #61dafb;
+  color: #e60909;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +38,46 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.expandable-section {
+  margin: 0;
+}
+
+.expand-btn {
+  background-color: #4458c5;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.expand-btn:hover {
+  background-color: #002c5a;
+}
+
+.content {
+  padding: 20px;
+  border: 1px solid #4b5591;
+  border-top: none;
+  display: none;
+  animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideDown {
+  from { display: none; height: 0; opacity: 0; }
+  to { display: block; height: auto; opacity: 1; }
+}
+
+/* Display the .content when isExpanded is true */
+.expandable-section .content {
+  display: block;
+}
+
+.footer {
+  height: 5%;
 }

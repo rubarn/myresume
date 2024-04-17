@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
+import MyFooter from './MyFooter';
 
-function Dropdown({ title, content }) {
-  const [isOpen, setIsOpen] = useState(false);
+
+function ExpandableSection({ title, children }) {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="dropdown">
-      <button onClick={() => setIsOpen(!isOpen)} className="dropbtn">{title}</button>
-      {isOpen && <div className="dropdown-content">{content}</div>}
+    <div className="expandable-section">
+      <button onClick={() => setIsExpanded(!isExpanded)} className="expand-btn">
+        {title}
+      </button>
+      {isExpanded && <div className="content">{children}</div>}
     </div>
   );
 }
@@ -17,43 +21,25 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Ruben Rokkones</h1>
-        <p>7056 Ranheim</p>
-        <p>+47 47621034 | ruben_r96@hotmail.com</p>
-        <p>Born: May 17, 1996</p>
+        <p>ruben_r96@hotmail.com</p>
       </header>
-      <Dropdown title="Education" content={<Education />} />
-      <Dropdown title="Experience" content={<Experience />} />
-      <Dropdown title="Additional Information" content={<AdditionalInfo />} />
-      <Dropdown title="References" content={<References />} />
+      <ExpandableSection title="Education">
+        <h2>2019 - 2024 Norwegian University of Science and Technology</h2>
+        <p>Natural Science with Teacher Education, years 8 - 13</p>
+        <p>Master's degree programme - Computer Science and Mathematics</p>
+        <h2></h2>
+      </ExpandableSection>
+      <ExpandableSection title="Experience">
+        <h2>Dec 2023 - Current Trondheim Kommune</h2>
+        <p>Substitute teacher</p>
+      </ExpandableSection>
+      <ExpandableSection title="Additional Information">
+        <p>Additional information...</p>
+      </ExpandableSection>
+      {/* Footer */}
+      <MyFooter />
     </div>
   );
 }
-
-const Education = () => (
-  <div>
-    {/* List all education items here */}
-  </div>
-);
-
-const Experience = () => (
-  <div>
-    {/* List all experience items here */}
-  </div>
-);
-
-const AdditionalInfo = () => (
-  <div>
-    {/* Add additional information here */}
-  </div>
-);
-
-const References = () => (
-  <div>
-    <p>Lars Kvendbø, Principal at Hoeggen school</p>
-    <p>Phone: 72 54 03 08</p>
-    <p>Email: lars.kvendbo@ou.trondheim.kommune.no</p>
-    <p>Other references available upon request.</p>
-  </div>
-);
 
 export default App;
